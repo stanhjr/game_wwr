@@ -14,7 +14,6 @@ the results are written to scores.txt
 """
 
 import settings
-from exceptions import Score
 from models import Player
 from models import Enemy
 from exceptions import EnemyDown
@@ -86,7 +85,7 @@ if __name__ == '__main__':
             if user_input == 'start':
                 process_game(user_name)
             elif user_input == 'show scores':
-                Score.show_scores(0)
+                GameOver.show_scores()
             elif user_input == 'help':
                 for i in settings.help_list:
                     print(i)

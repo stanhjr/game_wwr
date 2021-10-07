@@ -45,7 +45,8 @@ class Score:
                     return value
         return []
 
-    def show_scores(self):
+    @staticmethod
+    def show_scores():
         """Print of result, top - 10"""
         with open('scores.txt', 'r') as f:
             json_list = json.loads(f.read())
@@ -73,7 +74,7 @@ class Score:
                         break
 
 
-class GameOver(Exception):
+class GameOver(Exception, Score):
     """saving the score at the end of the game"""
     def __init__(self, scores, name):
         self.scores = scores
