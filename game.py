@@ -13,6 +13,7 @@ the results are written to scores.txt
 =========================================================
 """
 
+import sys
 import settings
 from models import Player
 from models import Enemy
@@ -46,14 +47,14 @@ def play(name):
         '\n'
     )
     player = Player(name)
-    level = 1
+    level = settings.LEVEL
     enemy = Enemy(level)
     while True:
         try:
             print(player.attack(enemy))
             print(player.defence(enemy))
         except EnemyDown:
-            print("\nEnemy defeated, next enemy!\n")
+            print('\nEnemy defeated, next enemy!\n')
             level += 1
             enemy = Enemy(level)
             player.score += 5
@@ -87,12 +88,12 @@ if __name__ == '__main__':
             elif user_input == 'show scores':
                 GameOver.show_scores()
             elif user_input == 'help':
-                for i in settings.help_list:
+                for i in settings.HELP_LIST:
                     print(i)
             elif user_input == 'exit':
-                raise ZeroDivisionError
+                sys.exit()
             else:
                 print('\nIncorrect enter command, try again')
-    except ZeroDivisionError:
+    finally:
         print('\nClose the program')
         print('Thank you, come again please')

@@ -15,8 +15,10 @@ from exceptions import GameOver
 
 class Enemy:
     """ The state of the enemy and the technology of returning a random value for the enemy's move"""
+
     def __init__(self, level):
-        self.lives = level
+        self.level = level
+        self.lives = self.level
 
     @staticmethod
     def select_attack() -> int:
@@ -33,11 +35,13 @@ class Enemy:
 
 class Player:
     """player points and lives and round calculation mechanism"""
+
     def __init__(self, name):
         self.name = name
+
     score = 0
-    lives = settings.lives
-    allowed_attack = [1, 2, 3]
+    lives = settings.LIVES
+    allowed_attacks = [1, 2, 3]
 
     @staticmethod
     def fight(attack, defense) -> int:
@@ -61,7 +65,7 @@ class Player:
             elif num == '3':
                 return 3
             else:
-                print("input is incorrect")
+                print('input is incorrect')
 
     def decrease_lives(self):
         self.lives -= 1
@@ -89,5 +93,3 @@ class Player:
         else:
             self.decrease_lives()
             return 'His attack successfully!'
-
-

@@ -86,5 +86,5 @@ class GameOver(Exception, Score):
             json_d = json.dumps(json_d)
         with open('scores.txt', 'w') as f:
             f.write(json_d)
-        print('\nSorry, ', name, "you lose")
+        print('\nSorry, ', name, 'you lose')
         print('You got ', self.scores, ' points')
